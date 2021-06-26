@@ -1,0 +1,12 @@
+{
+  "name": "JanrexClient",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "7.0.0"
+  }
+}
