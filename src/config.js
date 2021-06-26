@@ -7,6 +7,13 @@ module.exports = {
     skyColor: {
       enabled: true,
       color: "#000000",
+    },
+    autoFFA: {
+      enabled: false,
+      autoJoinGameMode: "ffa", // ffa tdm point ctf kc 
+      autoJoinKeybind: "F4",
+      attemptJoinFull: false,
+      filterWrongVersion: true,
     }
   }
 }

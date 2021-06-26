@@ -17,7 +17,8 @@ cd JANREX
 yarn #install deps
 yarn start #run client
 ```
-you can use electron-builder or electron-packager to make executables, although that's completely up to the user
+if you want to compile it, just run `yarn package-<PLATFORM>` but with your platform, ex: `yarn package-linux`
+all compiled builds end up in the release-builds folder
 
 # this seems pretty limiting....
 this client is more of a gateway for different patches to be applied, for example if you wish to add another chromium flag, add it to main.js
@@ -25,9 +26,10 @@ this client is more of a gateway for different patches to be applied, for exampl
 # planned features.....
 currently planned:
 - discord rpc
-- F4 lobby switcher builtin
-- building scripts
-- release builds
+- actual icon
+- ~~F4 lobby switcher builtin~~
+- ~~building scripts~~
+- ~~release builds~~
 - discord server
 - patch list for people to add (simular to the suckless hacking guide)
 - more! (dm me on discord Giant#7650 I'll try to add what I can :])

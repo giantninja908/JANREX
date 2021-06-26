@@ -4,9 +4,13 @@
   "main": "src/main.js",
   "license": "GPL-3.0-or-later",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icon/icon.icns --prune=true --out=release-builds --asar=true",
+    "package-win": "electron-packager . JANEX --overwrite --asar=true --platform=win32 --arch=x64 --icon=assets/icon/icon.ico --prune=true --out=release-builds --version-string.CompanyName=\"JANEX Devs\" --version-string.FileDescription=1.0.0 --version-string.ProductName=\"JANEX Client\"",
+    "package-linux": "electron-packager . JANEX --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icon/icon.png --prune=true --out=release-builds"
   },
   "devDependencies": {
-    "electron": "7.0.0"
+    "electron": "7.0.0",
+    "electron-packager": "^15.2.0"
   }
 }

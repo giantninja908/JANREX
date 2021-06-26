@@ -12,6 +12,10 @@ let scripts = [
           value: config.scriptSettings.skyColor.color,
       });
     }
+  },
+  (require("./scripts/lobby-switcher")()),
+  () => {
+    console.log("add your own scripts!")
   }
 ]
 
