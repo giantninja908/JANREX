@@ -26,7 +26,7 @@ this client is more of a gateway for different patches to be applied, for exampl
 # planned features.....
 currently planned:
 - discord rpc
-- actual icon
+- ~~actual icon~~
 - ~~F4 lobby switcher builtin~~
 - ~~building scripts~~
 - ~~release builds~~
