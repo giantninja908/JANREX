@@ -1,5 +1,6 @@
 # Janrex
 **J**ust **AN**other **R**andom **EX**citing Client
+
 [![Discord server](https://discordapp.com/api/guilds/858349630881923083/widget.png?style=shield)](https://discord.gg/wEZbFFX)
  
 # wait so how to download?
