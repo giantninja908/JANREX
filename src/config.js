@@ -8,7 +8,7 @@ module.exports = {
       enabled : true,
       color : "#000000",
     },
-    autoFFA : {
+    autoFFA : { //provided by nz#4471 / krTree
       enabled : false,
       autoJoinGameMode : "ffa", // ffa tdm point ctf kc
       autoJoinKeybind : "F4",
