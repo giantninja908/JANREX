@@ -1,5 +1,6 @@
 # Janrex
 **J**ust **AN**other **R**andom **EX**citing Client
+[![Discord server](https://discordapp.com/api/guilds/858349630881923083/widget.png?style=shield)](https://discord.gg/wEZbFFX)
  
 # wait so how to download?
 so unlike other clients, Janrex aims to use the actual source code as the intended method of modification, the default build comes with a sky color script, and modification is done with the actual source code, although there is a `config.js` file to be used appropriately
@@ -30,6 +31,6 @@ currently planned:
 - ~~F4 lobby switcher builtin~~
 - ~~building scripts~~
 - ~~release builds~~
-- discord server
+- ~~discord server~~
 - patch list for people to add (simular to the suckless hacking guide)
 - more! (dm me on discord Giant#7650 I'll try to add what I can :])
