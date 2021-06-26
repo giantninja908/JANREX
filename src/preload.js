@@ -13,7 +13,7 @@ let scripts = [
       });
     }
   },
-  (require("./scripts/lobby-switcher")()),
+  (require("./scripts/lobby-switch")),
   () => {
     console.log("add your own scripts!")
   }
