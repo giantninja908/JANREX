@@ -21,3 +21,13 @@ you can use electron-builder or electron-packager to make executables, although 
 
 # this seems pretty limiting....
 this client is more of a gateway for different patches to be applied, for example if you wish to add another chromium flag, add it to main.js
+
+# planned features.....
+currently planned:
+- discord rpc
+- F4 lobby switcher builtin
+- building scripts
+- release builds
+- discord server
+- patch list for people to add (simular to the suckless hacking guide)
+- more! (dm me on discord Giant#7650 I'll try to add what I can :])
