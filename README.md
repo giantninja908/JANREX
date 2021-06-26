@@ -12,7 +12,7 @@ yarn
 ```
 download/run instructions:
 ```sh
-git clone https://github.com/giantninja908/JANREX/
+git clone https://github.com/giantninja908/JANREX.git
 cd JANREX
 yarn #install deps
 yarn start #run client
