@@ -23,7 +23,6 @@ const init =
 const addSwitches =
     () => {
       if (config.disableFrameRateLimit) {
-        console.log("weary")
         app.commandLine.appendSwitch("disable-frame-rate-limit");
         app.commandLine.appendSwitch("disable-gpu-vsync");
       }
