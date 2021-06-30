@@ -22,6 +22,23 @@ let scripts =
 
 if (config.allowScripts) runScripts()
 
+document.addEventListener("keydown", (event) => {
+  if (event.code == "Escape") {
+    if (!(endUI.style.display === 'none')) {
+      menuHolder.style.display = 'block';
+      menuHider.style.display = 'block';
+      endUI.style.display = 'none';
+      uiBase.classList.add('onMenu');
+      instructionHolder.style.display = 'block';
+      overlay.style.display = 'none';
+    } else {
+      document.exitPointerLock =
+          document.exitPointerLock || document.mozExitPointerLock;
+      document.exitPointerLock();
+    }
+  }
+})
+
 window.prompt = () => { // import settings fix
   var tempHTML = '<div class="setHed">Import Settings</div>';
   tempHTML +=
