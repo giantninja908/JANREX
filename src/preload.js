@@ -9,7 +9,7 @@ let scripts =
       () => {
         // SKY COLOR SCRIPT
         if (config.scriptSettings.skyColor.enabled) {
-          Reflect.defineProperty(Object.prototype, "skyC", {
+          Reflect.defineProperty(Object.prototype, "skyCol", {
             value : config.scriptSettings.skyColor.color,
           });
         }
