@@ -23,7 +23,7 @@ const init =
 
       win.once("ready-to-show", () => { win.show(); });
       ipcMain.handle("rpc-activity",
-                     async (activity) => { await setActivity(activity); })
+                     async (_, activity) => { await setActivity(activity); })
     }
 
 const clientId = "861369241096552448";
@@ -31,9 +31,10 @@ const rpc = new DiscordRpc.Client({transport : 'ipc'});
 
 const setActivity =
     async (gameInfo) => {
+  console.log(gameInfo)
   rpc.setActivity({
-    details : gameInfo.mode,
-    state : gameInfo.map,
+    details : gameInfo.mode ? gameInfo.mode : "Playing Krunker",
+    state : gameInfo.map ? gameInfo.map : "having fun!",
     endTimestamp : Date.now() + gameInfo.time * 1000,
     largeImageText : "JANREX Client",
     largeImageKey : "janrex"
