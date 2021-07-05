@@ -3,6 +3,7 @@ module.exports = {
   angleBackend : "default",
   inProcessGPU : false,
   allowScripts : true,
+  discordRpc: true,
   scriptSettings : {
     skyColor : {
       enabled : true,

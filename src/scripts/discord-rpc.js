@@ -1,6 +1,9 @@
 const {ipcRenderer} = require('electron')
+const config = require("../config")
 
 module.exports = () => {
+  if (!config.discordRpc)
+    return;
   const runRpc = () => {
     const dat = (() => {
       try {
