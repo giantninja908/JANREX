@@ -15,6 +15,7 @@ let scripts =
         }
       },
       (require("./scripts/lobby-switch")),
+      (require("./scripts/discord-rpc")),
       () => {console.log("add your own scripts!")}
     ]
 

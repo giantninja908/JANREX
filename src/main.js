@@ -1,17 +1,20 @@
-const {app, BrowserWindow} = require("electron");
+const {app, ipcMain, BrowserWindow} = require("electron");
 const path = require('path');
 const config = require('./config');
+const DiscordRpc = require("discord-rpc");
 
 console.log(config);
 
+let win;
+
 const init =
     () => {
-      let win = new BrowserWindow({
+      win = new BrowserWindow({
         width : 1280,
         height : 720,
-        autoHideMenuBar: true,
+        autoHideMenuBar : true,
         webPreferences : {
-          preload : path.join(__dirname, 'preload.js')
+          preload : path.join(__dirname, 'preload.js'),
         }
       })
 
@@ -19,7 +22,23 @@ const init =
       win.loadURL('https://krunker.io');
 
       win.once("ready-to-show", () => { win.show(); });
+      ipcMain.handle("rpc-activity",
+                     async (activity) => { await setActivity(activity); })
     }
+
+const clientId = "861369241096552448";
+const rpc = new DiscordRpc.Client({transport : 'ipc'});
+
+const setActivity =
+    async (gameInfo) => {
+  rpc.setActivity({
+    details : gameInfo.mode,
+    state : gameInfo.map,
+    endTimestamp : Date.now() + gameInfo.time * 1000,
+    largeImageText : "JANREX Client",
+    largeImageKey : "janrex"
+  })
+}
 
 const addSwitches =
     () => {
@@ -40,3 +59,7 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+//------rpc-------
+
+rpc.login({clientId}).catch(console.error);
