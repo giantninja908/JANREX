@@ -9,9 +9,10 @@ let win;
 
 const init =
     () => {
+      const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize;
       win = new BrowserWindow({
-        width : 1280,
-        height : 720,
+        width : width,
+        height : height,
         autoHideMenuBar : true,
         webPreferences : {
           preload : path.join(__dirname, 'preload.js'),
@@ -25,7 +26,7 @@ const init =
       ipcMain.handle("rpc-activity",
                      async (_, activity) => { await setActivity(activity); })
 
-      win.webContents.on('new-window', (event, url, _, _, options) => {
+      win.webContents.on('new-window', (event, url, _, __, options) => {
         if (!url)
           return;
         if (url.startsWith('https://twitch.tv/') ||
