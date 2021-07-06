@@ -24,6 +24,31 @@ const init =
       win.once("ready-to-show", () => { win.show(); });
       ipcMain.handle("rpc-activity",
                      async (_, activity) => { await setActivity(activity); })
+
+      win.webContents.on('new-window', (event, url, _, _, options) => {
+        if (!url)
+          return;
+        if (url.startsWith('https://twitch.tv/') ||
+            url.startsWith('https://www.twitch.tv') ||
+            url.startsWith('https://www.youtube')) {
+          event.preventDefault();
+          shell.openExternal(url);
+          return;
+        } else {
+          event.preventDefault();
+          const newWin = new BrowserWindow({
+            width : width * 0.75,
+            height : height * 0.9,
+            webContents : options.webContents,
+            show : false
+          });
+          newWin.once('ready-to-show', () => newWin.show());
+          if (!options.webContents) {
+            newWin.loadURL(url);
+          }
+          event.newGuest = newWin;
+        }
+      });
     }
 
 const clientId = "861369241096552448";
