@@ -1,4 +1,4 @@
-const {app, ipcMain, BrowserWindow} = require("electron");
+const {app, ipcMain, BrowserWindow, screen} = require("electron");
 const path = require('path');
 const config = require('./config');
 const DiscordRpc = require("discord-rpc");
@@ -9,7 +9,7 @@ let win;
 
 const init =
     () => {
-      const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize;
+      const {width, height} = screen.getPrimaryDisplay().workAreaSize;
       win = new BrowserWindow({
         width : width,
         height : height,
