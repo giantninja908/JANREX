@@ -25,7 +25,7 @@ const init =
       win.once("ready-to-show", () => { win.show(); });
       ipcMain.handle("rpc-activity",
                      async (_, activity) => { await setActivity(activity); })
-
+      win.on('close', ()=>{app.quit()});
       win.webContents.on('new-window', (event, url, _, __, options) => {
         if (!url)
           return;
