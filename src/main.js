@@ -43,6 +43,7 @@ const init =
             webContents : options.webContents,
             show : false
           });
+          win.on('close', () => newWin.close())
           newWin.once('ready-to-show', () => newWin.show());
           if (!options.webContents) {
             newWin.loadURL(url);
@@ -58,13 +59,16 @@ const rpc = new DiscordRpc.Client({transport : 'ipc'});
 const setActivity =
     async (gameInfo) => {
   console.log(gameInfo)
-  rpc.setActivity({
-    details : gameInfo.mode ? gameInfo.mode : "Playing Krunker",
-    state : gameInfo.map ? gameInfo.map : "having fun!",
-    endTimestamp : Date.now() + gameInfo.time * 1000,
-    largeImageText : "JANREX Client",
-    largeImageKey : "janrex"
-  })
+  try {
+    rpc.setActivity({
+      details : gameInfo.mode ? gameInfo.mode : "Playing Krunker",
+      state : gameInfo.map ? gameInfo.map : "having fun!",
+      endTimestamp : Date.now() + gameInfo.time * 1000,
+      largeImageText : "JANREX Client",
+      largeImageKey : "janrex"
+    })
+  } catch {
+  }
 }
 
 const addSwitches =
