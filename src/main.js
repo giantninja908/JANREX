@@ -10,10 +10,11 @@ let win;
 const init =
     () => {
       const {width, height} = screen.getPrimaryDisplay().workAreaSize;
+      const startInFullscreen = (config.startInFullscreen) ? true : false;
       win = new BrowserWindow({
         width : width,
         height : height,
-        fullscreen: true,
+        fullscreen: startInFullscreen,
         autoHideMenuBar : true,
         webPreferences : {
           preload : path.join(__dirname, 'preload.js'),
