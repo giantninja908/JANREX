@@ -4,6 +4,7 @@ module.exports = {
   inProcessGPU : false,
   allowScripts : true,
   discordRpc : true,
+  startInFullscreen : true,
   scriptSettings : {
     skyColor : {
       enabled : true,
