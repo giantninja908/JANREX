@@ -13,6 +13,7 @@ const init =
       win = new BrowserWindow({
         width : width,
         height : height,
+        fullscreen: true,
         autoHideMenuBar : true,
         webPreferences : {
           preload : path.join(__dirname, 'preload.js'),
