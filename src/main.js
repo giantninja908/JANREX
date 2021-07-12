@@ -44,7 +44,7 @@ const init =
             webContents : options.webContents,
             show : false
           });
-          win.on('close', () => newWin.close())
+          win.on('close', () => if(newWin) newWin.close())
           newWin.once('ready-to-show', () => newWin.show());
           if (!options.webContents) {
             newWin.loadURL(url);
