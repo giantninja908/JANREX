@@ -2,6 +2,7 @@ const {app, ipcMain, BrowserWindow, screen} = require("electron");
 const path = require('path');
 const config = require('./config');
 const DiscordRpc = require("discord-rpc");
+const { shell } = require('electron');
 
 console.log(config);
 
@@ -32,7 +33,7 @@ const init =
           return;
         if (url.startsWith('https://twitch.tv/') ||
             url.startsWith('https://www.twitch.tv') ||
-            url.startsWith('https://www.youtube')) {
+            url.startsWith('https://www.youtube.com/')) {
           event.preventDefault();
           shell.openExternal(url);
           return;
