@@ -42,7 +42,8 @@ const init =
             width : width * 0.75,
             height : height * 0.9,
             webContents : options.webContents,
-            show : false
+            show : false,
+            autoHideMenuBar : true,
           });
           win.on('close', () => {if(newWin) newWin.close()})
           newWin.once('ready-to-show', () => newWin.show());
