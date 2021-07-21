@@ -1,6 +1,6 @@
 module.exports = {
   disableFrameRateLimit : true,
-  angleBackend : "default",
+  angleBackend : "default", // gl default d3d11 d3d9 d3d11on12 vulkan metal
   inProcessGPU : false,
   allowScripts : true,
   discordRpc : true,
