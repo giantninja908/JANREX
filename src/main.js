@@ -2,6 +2,7 @@ const {app, ipcMain, BrowserWindow, screen} = require("electron");
 const path = require('path');
 const config = require('./config');
 const DiscordRpc = require("discord-rpc");
+const { shell } = require('electron');
 
 console.log(config);
 
@@ -32,7 +33,7 @@ const init =
           return;
         if (url.startsWith('https://twitch.tv/') ||
             url.startsWith('https://www.twitch.tv') ||
-            url.startsWith('https://www.youtube')) {
+            url.startsWith('https://www.youtube.com/')) {
           event.preventDefault();
           shell.openExternal(url);
           return;
@@ -42,9 +43,10 @@ const init =
             width : width * 0.75,
             height : height * 0.9,
             webContents : options.webContents,
-            show : false
+            show : false,
+            autoHideMenuBar : true,
           });
-          win.on('close', () => newWin.close())
+          win.on('close', () => {if(newWin) newWin.close()})
           newWin.once('ready-to-show', () => newWin.show());
           if (!options.webContents) {
             newWin.loadURL(url);
