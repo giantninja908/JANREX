@@ -1,8 +1,16 @@
 const {app, ipcMain, BrowserWindow, screen} = require("electron");
 const path = require('path');
+const fs = require('fs');
+
+// config check
+if (!fs.existsSync(path.join(__dirname, "config.js"))) {
+  fs.copyFileSync(path.join(__dirname, "config.def.js"),
+                  path.join(__dirname, "config.js"))
+}
+
 const config = require('./config');
 const DiscordRpc = require("discord-rpc");
-const { shell } = require('electron');
+const {shell} = require('electron');
 
 console.log(config);
 
@@ -14,7 +22,7 @@ const init =
       win = new BrowserWindow({
         width : width,
         height : height,
-        fullscreen: config.startInFullscreen,
+        fullscreen : config.startInFullscreen,
         autoHideMenuBar : true,
         webPreferences : {
           preload : path.join(__dirname, 'preload.js'),
@@ -27,7 +35,7 @@ const init =
       win.once("ready-to-show", () => { win.show(); });
       ipcMain.handle("rpc-activity",
                      async (_, activity) => { await setActivity(activity); })
-      win.on('close', ()=>{app.quit()});
+      win.on('close', () => {app.quit()});
       win.webContents.on('new-window', (event, url, _, __, options) => {
         if (!url)
           return;
@@ -46,7 +54,10 @@ const init =
             show : false,
             autoHideMenuBar : true,
           });
-          win.on('close', () => {if(newWin) newWin.close()})
+          win.on('close', () => {
+            if (newWin)
+              newWin.close()
+          })
           newWin.once('ready-to-show', () => newWin.show());
           if (!options.webContents) {
             newWin.loadURL(url);
