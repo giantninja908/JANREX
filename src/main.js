@@ -33,6 +33,10 @@ const init =
       win.loadURL('https://krunker.io');
 
       win.once("ready-to-show", () => { win.show(); });
+        win.webContents.on('before-input-event', (event, input) => {
+        if (input.key==="F11") {win.setFullScreen(!win.isFullScreen()); event.preventDefault()}
+        if (input.key==="F5") {win.reload(); event.preventDefault()}
+      });
       ipcMain.handle("rpc-activity",
                      async (_, activity) => { await setActivity(activity); })
       win.on('close', () => {app.quit()});
