@@ -2,7 +2,16 @@
 
 const config = require("./config");
 
-window.OffCliV = "something" // get rid of client unsupported message
+new MutationObserver((a) => {
+  a.forEach((b) => {
+    if (b.type === "attributes" && b.target.style.display != "none") {
+      document.getElementById("popupHolder").style.display = "none";
+      document.getElementById("clientPop").style.display = "none";
+    }
+  });
+}).observe(document.getElementById("clientPop"), {
+  attributes: true,
+});
 
 let scripts =
     [
@@ -18,37 +27,16 @@ let scripts =
       () => {console.log("add your own scripts!")}
     ]
 
-    const runScripts = () => { scripts.forEach(script => {(script)()}); }
+    const runScripts = () => { scripts.forEach(script => {
+      try {
+        (script)()
+      } catch (_) {}
+    }); }
 
 if (config.allowScripts) runScripts()
 
 document.addEventListener("keydown", (event) => {
-  if (event.code == "Escape") {
+  if (event.key == "Escape") {
     document.exitPointerLock();
   }
-})
-
-window.prompt = () => { // import settings fix
-  var tempHTML = '<div class="setHed">Import Settings</div>';
-  tempHTML +=
-      '<div class="settName" id="importSettings_div" style="display:block">Settings String<input type="url" placeholder="Paste Settings String Here" name="url" class="inputGrey2" id="settingString"></div>';
-  tempHTML += '<a class="+" id="importBtn">Import</a>';
-  menuWindow.innerHTML = tempHTML;
-  importBtn.addEventListener('click',
-                             () => { parseSettings(settingString.value); });
-
-  function parseSettings(string) {
-    if (string && string != '') {
-      try {
-        var json = JSON.parse(string);
-        for (var setting in json) {
-          setSetting(setting, json[setting]);
-          showWindow(1);
-        }
-      } catch (err) {
-        console.error(err);
-        alert('Error importing settings.');
-      }
-    }
-  }
-};
+});
