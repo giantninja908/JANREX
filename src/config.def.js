@@ -7,7 +7,7 @@ module.exports = {
   startInFullscreen : true,
   scriptSettings : {
     skyColor : {
-      enabled : true,
+      enabled : false,
       color : "#000000",
     },
     autoFFA : {
