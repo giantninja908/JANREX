@@ -10,9 +10,9 @@
     "package-win-ia32": "electron-packager . JANREX --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icon/icon.ico --prune=true --out=release-builds --version-string.CompanyName=\"JANREX Devs\" --version-string.FileDescription=1.0.0 --version-string.ProductName=\"JANREX Client\"",
     "package-linux": "electron-packager . JANREX --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icon/icon.png --prune=true --out=release-builds",
     "package-linux-ia32": "electron-packager . JANREX --overwrite --asar=true --platform=linux --arch=ia32 --icon=assets/icon/icon.png --prune=true --out=release-builds"
-},
+  },
   "devDependencies": {
-    "electron": "7.3.3",
+    "electron": "10",
     "electron-packager": "^15.2.0"
   },
   "dependencies": {
