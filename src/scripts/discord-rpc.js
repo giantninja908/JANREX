@@ -10,7 +10,7 @@ module.exports = () => {
         return window.getGameActivity()
       } catch (excp) {
         console.error(excp)
-        return {}
+        return;
       }
     })()
     ipcRenderer.invoke("rpc-activity", dat)
