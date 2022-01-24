@@ -6,6 +6,7 @@ module.exports = {
   discordRpc : true,
   startInFullscreen : true,
   scriptSettings : {
+//sky color script is broken
     skyColor : {
       enabled : false,
       color : "#000000",
