@@ -32,6 +32,13 @@ const init =
       win.removeMenu();
       win.loadURL('https://krunker.io');
 
+win.webContents.on("new-window", (e, url) => {
+        if(!url.includes("social.html")) {
+            e.preventDefault();
+            win.loadURL(url);
+        }
+});
+
       win.once("ready-to-show", () => { win.show(); });
         win.webContents.on('before-input-event', (event, input) => {
         if (input.key==="F11") {win.setFullScreen(!win.isFullScreen()); event.preventDefault()}
@@ -95,6 +102,9 @@ const addSwitches =
         app.commandLine.appendSwitch("disable-frame-rate-limit");
         app.commandLine.appendSwitch("disable-gpu-vsync");
       }
+        if (config.recaptchafix) {
+    	app.commandLine.appendSwitch("no-sandbox");
+    }
       if (config.inProcessGPU)
         app.commandLine.appendSwitch("in-process-gpu");
       app.commandLine.appendSwitch("use-angle", config.angleBackend);
