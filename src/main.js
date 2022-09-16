@@ -100,10 +100,10 @@ const addSwitches =
     () => {
       if (config.disableFrameRateLimit) {
         app.commandLine.appendSwitch("disable-frame-rate-limit");
+        app.commandLine.appendSwitch("disable-gpu-vsync");
       }
         if (config.recaptchafix) {
-        app.commandLine.appendSwitch("disable-gpu-vsync");
-	app.commandLine.appendSwitch("no-sandbox");
+    	app.commandLine.appendSwitch("no-sandbox");
     }
       if (config.inProcessGPU)
         app.commandLine.appendSwitch("in-process-gpu");
